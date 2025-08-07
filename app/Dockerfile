@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:3.11-slim
 
 ARG https_proxy
 ARG http_proxy
@@ -10,7 +10,7 @@ ARG INSTALL_PATH=/srv/rest_api
 COPY . $INSTALL_PATH/.
 
 
-WORKDIR $INSTALL_PATH
+WORKDIR $INSTALL_PATH/app
 RUN pip cache purge
 RUN pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --default-timeout=1000 install --user --no-cache-dir -r requirements.txt
 EXPOSE 8000
