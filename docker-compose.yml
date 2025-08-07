@@ -10,6 +10,10 @@ services:
     build:
       context: .
       dockerfile: ./app/Dockerfile
+      #для сборки через прокси
+#      args:
+#        - http_proxy=
+#        - https_proxy=
     env_file:
       - ./app/.env-sample
     depends_on:
@@ -19,7 +23,7 @@ services:
     command: bash -c "
             /root/.local/bin/alembic upgrade head
             && python3 deploy.py
-            && /root/.local/bin/uvicorn --reload main:app
+            && /root/.local/bin/uvicorn --host 0.0.0.0 --port 8000 --reload main:app
             "
     ports:
       - '8000:8000'
