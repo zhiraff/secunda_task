@@ -1,0 +1,10 @@
+.venv
+app/.env
+app\.env
+*/__pycache__
+*/*/__pycache__
+*/*/*/__pycache__
+*\__pycache__
+*\*\__pycache__
+*\*\*\__pycache__
+.idea
